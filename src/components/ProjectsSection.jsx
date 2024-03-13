@@ -1,7 +1,25 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
+import { Project } from './Project'
+import Angular from '../assets/angular_whiteTransparent.png'
 import Futur from '../assets/future.png'
+import Symfony from '../assets/symfony.png'
 import Entract from '../assets/entracte1.png'
+import Bootstrap from '../assets/bootstrap-logo-shadow.png'
+
+
+const defaultFontFamilyTitle = css`
+    font-family: Inter, sans-serif; /* Vous pouvez remplacer 'Arial' par votre police de caractères par défaut */
+`;
+
+
+
+const Subtitle = styled.h2 `
+    ${defaultFontFamilyTitle}
+    text-transform: uppercase;
+    font-size: 4em;
+    font-weight: 700;
+`
 
 const WrapperProjects = styled.div `
 color: white;
@@ -17,63 +35,44 @@ const WrapperProject = styled.div `
     width: 100%;
 `
 
-const ProjectsImageWrapper = styled.div`
-    position: relative;
-    height: 200px;
-    width: 400px;
-    border-radius: 20px;
-    overflow: hidden;
-`;
-
-const ProjectsImage = styled.img`
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-`;
-
-const ImageText = styled.p`
-    position: absolute;
-    // border-radius: 20px;
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 1rem;
-    font-weight: 100;
-    line-height: 1.1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    width: 400px;
-    height: 202px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-        opacity: 1;
-        backdrop-filter: blur(10px);
-    }
-`;
 
 
-export const Projects = () => {
+export const ProjectsSection = () => {
+
+    
   return (
     <WrapperProjects>
-        <h2>Projects</h2>
+        <Subtitle>Projects</Subtitle>
         <WrapperProject>
 
-        <div>
-                <ProjectsImageWrapper>
-                    <ProjectsImage src={Futur} alt="Futur project"/>
-                    <ImageText>Projet Futur</ImageText>
-                </ProjectsImageWrapper>
-                <div>
-                    <p>Technologies</p>
-                </div>
-            </div>
+        <Project
+        title="NFT Marketplace"
+        alt="logo symfony"
+        description="Projet futur"
+        src={Futur}
+        Symfony={Symfony}
+        Bootstrap={Bootstrap}
+        Angular={Angular}
+        />
 
-            <div>
+        <Project
+        title="Entracte"
+        alt="Site de bière"
+        description="Site Vitrine Entracte"
+        src={Entract}
+        />
+
+        <Project
+        title="NFT Marketplace"
+        alt="logo symfony"
+        description="Projet futur"
+        src={Futur}
+        Symfony={Symfony}
+        Bootstrap={Bootstrap}
+        Angular={Angular}
+        />
+
+            {/* <div>
                 <ProjectsImageWrapper>
                     <ProjectsImage src={Entract} alt="Entract project"/>
                     <ImageText>
@@ -93,7 +92,7 @@ export const Projects = () => {
                 <div>
                     <p>Technologies</p>
                 </div>
-            </div>
+            </div> */}
 
         </WrapperProject>
     </WrapperProjects>
