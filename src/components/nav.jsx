@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Navbar = styled.nav `
-background: rgba(0, 0, 0, .3);
+background: white;
 width: max-content;
 padding: 0.7rem 1.7rem;
 z-index: 2;
