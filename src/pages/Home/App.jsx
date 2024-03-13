@@ -1,6 +1,6 @@
 import '../../../src/App.css'
-import Nav from '../../components/nav';
-import Presentation from '../../components/presentation';
+import Nav from '../../components/Nav';
+import Presentation from '../../components/Presentation';
 
 function App() {
   return (
