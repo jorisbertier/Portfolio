@@ -85,8 +85,10 @@ margin-left: 10px;
         props.$invert &&
         `filter: invert(100%);`
     }
+    display: ${(props) => props.src ? 'block' : 'none'};
+
 `
-export const Project = ({title, alt, description, src, Symfony, Bootstrap, Angular}) => {
+export const Project = ({title, alt, description, src, stack1, stack2, stack3}) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -107,10 +109,10 @@ export const Project = ({title, alt, description, src, Symfony, Bootstrap, Angul
                             <StyledArrowIcon onClick={() => setIsOpen(false)}> &gt; </StyledArrowIcon>
                         </div>
                         <ProjectTechnology>
-                            <h3>Stack</h3>
-                            <ImgStack src={Symfony} alt={alt} $invert/>
-                            <ImgStack src={Angular} alt="logo symfony"/>
-                            <ImgStack src={Bootstrap} alt="logo symfony"/>
+                            <h3>Stack - </h3>
+                            <ImgStack src={stack1} alt={alt} $invert/>
+                            <ImgStack src={stack2} alt="logo symfony"/>
+                            <ImgStack src={stack3} alt="logo symfony"/>
                         </ProjectTechnology>
                     </>
                 ) : (

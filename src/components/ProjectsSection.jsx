@@ -1,11 +1,15 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
 import { Project } from './Project'
-import Angular from '../assets/angular_whiteTransparent.png'
 import Futur from '../assets/future.png'
-import Symfony from '../assets/symfony.png'
 import Entract from '../assets/entracte1.png'
-import Bootstrap from '../assets/bootstrap-logo-shadow.png'
+
+import Symfony from '../assets/logoStack/symfony.png'
+import Bootstrap from '../assets/logoStack/bootstrap-logo-shadow.png'
+import Angular from '../assets/logoStack/angular_whiteTransparent.png'
+import Scss from '../assets/logoStack/seal-color-reversed.png'
+import Js from '../assets/logoStack/js.png'
+import Php from '../assets/logoStack/php.png'
 
 
 const defaultFontFamilyTitle = css`
@@ -50,9 +54,9 @@ export const ProjectsSection = () => {
         alt="logo symfony"
         description="Projet futur"
         src={Futur}
-        Symfony={Symfony}
-        Bootstrap={Bootstrap}
-        Angular={Angular}
+        stack1={Symfony}
+        stack2={Bootstrap}
+        stack3={Angular}
         />
 
         <Project
@@ -60,6 +64,8 @@ export const ProjectsSection = () => {
         alt="Site de bière"
         description="Site Vitrine Entracte"
         src={Entract}
+        stack2={Scss}
+        stack3={Js}
         />
 
         <Project
@@ -67,9 +73,7 @@ export const ProjectsSection = () => {
         alt="logo symfony"
         description="Projet futur"
         src={Futur}
-        Symfony={Symfony}
-        Bootstrap={Bootstrap}
-        Angular={Angular}
+        stack2={Php}
         />
 
             {/* <div>
