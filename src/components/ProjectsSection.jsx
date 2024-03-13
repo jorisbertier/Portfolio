@@ -9,7 +9,9 @@ import Bootstrap from '../assets/logoStack/bootstrap-logo-shadow.png'
 import Angular from '../assets/logoStack/angular_whiteTransparent.png'
 import Scss from '../assets/logoStack/seal-color-reversed.png'
 import Js from '../assets/logoStack/js.png'
-import Php from '../assets/logoStack/php.png'
+import Jquery from '../assets/logoStack/jquery.gif'
+import Google from '../assets/logoStack/google.png'
+import Explore from '../assets/calendarAPI1.png'
 
 
 const defaultFontFamilyTitle = css`
@@ -52,7 +54,7 @@ export const ProjectsSection = () => {
         <Project
         title="NFT Marketplace"
         alt="logo symfony"
-        description="Projet futur"
+        description="Future est une plateforme combinant cryptomonnaies et NFTs qui offre aux utilisateurs la possibilité de découvrir, acheter, créer et suivre la valeur des NFTs."
         src={Futur}
         stack1={Symfony}
         stack2={Bootstrap}
@@ -61,19 +63,21 @@ export const ProjectsSection = () => {
 
         <Project
         title="Entracte"
-        alt="Site de bière"
-        description="Site Vitrine Entracte"
+        alt="Site de bière Entracte"
+        description="Entracte est un site vitrine d'une brasserie et bar en ligne. Le site à pour objectif de présenter la brasserie ainsi que les bières artisanales qui sont proposés par le commerçant."
         src={Entract}
         stack2={Scss}
         stack3={Js}
         />
 
         <Project
-        title="NFT Marketplace"
-        alt="logo symfony"
-        description="Projet futur"
-        src={Futur}
-        stack2={Php}
+        title="Explore Calendar"
+        alt="Calendrier prise de rendez-vous"
+        description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Projet confidientiel)"
+        src={Explore}
+        stack1={Symfony}
+        stack2={Jquery}
+        stack3={Google}
         />
 
             {/* <div>
