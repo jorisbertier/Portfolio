@@ -2,6 +2,7 @@ import '../../../src/App.css'
 import Nav from '../../components/Nav.jsx';
 import Presentation from '../../components/Presentation';
 import { ProjectsSection } from '../../components/ProjectsSection.jsx';
+import { SkillsSection } from '../../components/SkillsSection.jsx';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Nav></Nav>
       <Presentation></Presentation>
       <ProjectsSection/>
+      <SkillsSection />
     </div>
   );
 }

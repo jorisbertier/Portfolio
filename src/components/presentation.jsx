@@ -40,9 +40,9 @@ const StyledIcon  = styled.i `
 function Presentation () {
     return( 
     <WrapperFirstSection>
-        <Subtitle>Developer full-stack</Subtitle>
+        <Subtitle>Full Stack Developer</Subtitle>
         <Title>Hey i’m Joris Bertier<br></br>
-But you can  call me JB</Title>
+I develope things for the web.</Title>
         <Span>
             <StyledIcon className="bi bi-github"/>
             <StyledIcon className="bi bi-linkedin"/>

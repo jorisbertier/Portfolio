@@ -18,8 +18,6 @@ const defaultFontFamilyTitle = css`
     font-family: Inter, sans-serif; /* Vous pouvez remplacer 'Arial' par votre police de caractères par défaut */
 `;
 
-
-
 const Subtitle = styled.h2 `
     ${defaultFontFamilyTitle}
     text-transform: uppercase;
@@ -48,7 +46,7 @@ export const ProjectsSection = () => {
     
   return (
     <WrapperProjects>
-        <Subtitle>Projects</Subtitle>
+        <Subtitle>{`< Projects />`}</Subtitle>
         <WrapperProject>
 
         <Project
