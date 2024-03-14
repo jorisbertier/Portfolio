@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, {css} from 'styled-components'
 import { Project } from './Project'
 import Futur from '../assets/future.png'
@@ -43,7 +43,9 @@ const WrapperProject = styled.div `
 
 export const ProjectsSection = () => {
 
-    
+    const [addProject, setAddProject] = useState(false)
+
+  
   return (
     <WrapperProjects>
         <Subtitle>{`< Projects />`}</Subtitle>
@@ -78,29 +80,27 @@ export const ProjectsSection = () => {
         stack3={Google}
         />
 
-            {/* <div>
-                <ProjectsImageWrapper>
-                    <ProjectsImage src={Entract} alt="Entract project"/>
-                    <ImageText>
-                    Epic Workshop est une application bureau libre travaillant avec le jeu Rocket League. L’application a pour objectif de faciliter l’accès aux joueurs à des maps créé par la communauté, utilisant un système de “Swap” rapide et très simplifié.
-                    </ImageText>
-                </ProjectsImageWrapper>
-                <div>
-                    <p>Technologies</p>
-                </div>
-            </div>
-
-            <div>
-                <ProjectsImageWrapper>
-                    <ProjectsImage src={Futur} alt="Futur project"/>
-                    <ImageText>Projet Futur</ImageText>
-                </ProjectsImageWrapper>
-                <div>
-                    <p>Technologies</p>
-                </div>
-            </div> */}
-
         </WrapperProject>
+        <br/><br/>
+        
+        {addProject ?
+        (
+            <>
+            <Project
+            title="Explore Calendar"
+            alt="Calendrier prise de rendez-vous"
+            description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Projet confidientiel)"
+            src={Explore}
+            stack1={Symfony}
+            stack2={Jquery}
+            stack3={Google}
+            />
+        
+        <div><button onClick={() => setAddProject(false)}>Load close</button></div>
+        </>
+        ): (
+        <div><button onClick={() => setAddProject(true)}>Load more</button></div>
+        )}
     </WrapperProjects>
   )
 }
