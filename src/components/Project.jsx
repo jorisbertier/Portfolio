@@ -8,18 +8,18 @@ const defaultFontFamily = css`
 
 
 const StyledArrowIcon = styled.i `
-width: 50px; /* Largeur du cercle */
-height: 50px; /* Hauteur du cercle */
-border-radius: 50%; /* Pour créer un cercle */
-display: flex; /* Pour centrer le contenu */
-align-items: center; /* Pour centrer le contenu verticalement */
-justify-content: center; /* Pour centrer le contenu horizontalement */
-color: white; /* Couleur de la flèche */
-font-size: 24px; /* Taille de la flèche */
-background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
-backdrop-filter: blur(10px); /* Effet de flou pour le verre */
-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombre pour le verre */
-cursor: pointer;
+    width: 50px; /* Largeur du cercle */
+    height: 50px; /* Hauteur du cercle */
+    border-radius: 50%; /* Pour créer un cercle */
+    display: flex; /* Pour centrer le contenu */
+    align-items: center; /* Pour centrer le contenu verticalement */
+    justify-content: center; /* Pour centrer le contenu horizontalement */
+    color: white; /* Couleur de la flèche */
+    font-size: 24px; /* Taille de la flèche */
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
+    backdrop-filter: blur(10px); /* Effet de flou pour le verre */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombre pour le verre */
+    cursor: pointer;
 `
 
 const ProjectsImageWrapper = styled.div`
