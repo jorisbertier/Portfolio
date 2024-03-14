@@ -1,4 +1,5 @@
 import '../../../src/App.css'
+import { ContactForm } from '../../components/ContactForm.jsx';
 import Nav from '../../components/Nav.jsx';
 import Presentation from '../../components/Presentation';
 import { ProjectsSection } from '../../components/ProjectsSection.jsx';
@@ -11,6 +12,7 @@ function App() {
       <Presentation></Presentation>
       <ProjectsSection/>
       <SkillsSection />
+      <ContactForm />
     </div>
   );
 }

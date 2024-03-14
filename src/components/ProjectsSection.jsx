@@ -39,6 +39,28 @@ const WrapperProject = styled.div `
     width: 100%;
 `
 
+const ButtonLoad = styled.button `
+
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #007bff;
+    color: #007bff;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 8px 6px 0 2px #1d1e30;
+
+    &:hover {
+        background-color: #007bff; /* Couleur de fond au survol */
+        color: #fff; /* Couleur du texte au survol */
+    }
+`
+
 
 
 export const ProjectsSection = () => {
@@ -96,10 +118,10 @@ export const ProjectsSection = () => {
             stack3={Google}
             />
         
-        <div><button onClick={() => setAddProject(false)}>Load close</button></div>
+        <div><ButtonLoad onClick={() => setAddProject(false)}>Load close</ButtonLoad></div>
         </>
         ): (
-        <div><button onClick={() => setAddProject(true)}>Load more</button></div>
+        <div><ButtonLoad onClick={() => setAddProject(true)}>Load more</ButtonLoad></div>
         )}
     </WrapperProjects>
   )
