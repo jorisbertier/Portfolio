@@ -18,7 +18,6 @@ const ContactWrapper = styled.div `
     border-radius: 15px;
     height: 70vh;
     margin-bottom: 100px;
-    margin-top: 100px;
 
 `
 

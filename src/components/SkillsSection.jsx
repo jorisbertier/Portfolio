@@ -15,13 +15,33 @@ const Subtitle = styled.h2 `
 `
 
 const SkillsWrapper = styled.div `
-margin-left: 10%;
-margin-right: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
     height: 20vh;
     max-width: 100vw;
     width: 80%;
     display:flex;
     justify-content: space-around;
+`
+const TextSkills = styled.p `
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    position: absolute;
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    bottom: -15px;
+    left: 49%; 
+    transform: translate(-50%, 50%);
+    font-size: 0.8rem;
+    opacity: 0;
+    padding: 5px 15px;
+    transition: 0.3s ease;
+
+    // &:hover {
+    //     opacity:1;
+    // }
+
 `
 
 const SvgWrapper = styled.div `
@@ -68,6 +88,9 @@ const SvgWrapper = styled.div `
     transition: transform 0.3s ease;
     &:hover {
         transform: translateY(-10px);
+        ${TextSkills} {
+            opacity: 1;
+            }
     }
 `
 
@@ -91,22 +114,6 @@ const ImgBackground = styled.img `
     height: 70%;
     width: 70%;
     padding: 3px;
-`
-
-const TextSkills = styled.p `
-color: white;
-font-size: 1em;
-font-weight: 500;
-position: absolute;
-backdrop-filter: blur(20px);
-border-radius: 15px;
-bottom: -15px;
-left: 49%; 
-transform: translate(-50%, 50%);
-font-size: 0.8rem;
-opacity: 1;
-padding: 5px 15px;
-transition: transform 0.3s ease;
 `
 
 export const SkillsSection = () => {
