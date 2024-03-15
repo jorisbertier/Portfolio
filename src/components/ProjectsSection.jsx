@@ -95,7 +95,7 @@ export const ProjectsSection = () => {
         <Project
         title="Explore Calendar"
         alt="Calendrier prise de rendez-vous"
-        description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Projet confidientiel)"
+        description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Non disponible - Projet confidientiel)"
         src={Explore}
         stack1={Symfony}
         stack2={Jquery}

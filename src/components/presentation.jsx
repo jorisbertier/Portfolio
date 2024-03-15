@@ -42,7 +42,7 @@ function Presentation () {
     <WrapperFirstSection>
         <Subtitle>Full Stack Developer</Subtitle>
         <Title>Hey i’m Joris Bertier<br></br>
-I develope things for the web.</Title>
+I develop things for the web.</Title>
         <Span>
             <StyledIcon className="bi bi-github"/>
             <StyledIcon className="bi bi-linkedin"/>
