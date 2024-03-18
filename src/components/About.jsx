@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Profil from '../assets/Remove-bg.ai_1710531677010.png'
 
@@ -137,11 +137,24 @@ const TextAbout = styled.p `
 
 export const About = () => {
 
-    let date = new Date();
+    const [parisTime, setParisTime] = useState(getTimeParis())
 
-    let parisOffset = 1;
-    let parisHours = (date.getUTCHours() + parisOffset) % 24;
-    let parisMin = (date.getUTCMinutes());
+    function getTimeParis() {
+        let date = new Date();
+        let parisOffset = 1;
+        let parisHours = (date.getUTCHours() + parisOffset) % 24;
+        let parisMin = (date.getUTCMinutes());
+        return {hours: parisHours, minutes: parisMin}
+    }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setParisTime(getTimeParis());
+          }, 1000);
+
+          return () => clearInterval(interval);
+    
+    }, [])
 
     console.log(typeof(parisHours));
   return (
@@ -160,7 +173,7 @@ export const About = () => {
         <WrapperContact $50>
             <SectionContact $30>
                 <Subtitle>I'M JORIS</Subtitle>
-                <TextAbout>Passionate developer, i build things for people.</TextAbout>
+                <TextAbout>I'm passionate developer, know for technical expertise. I'm building websites, designing user interfaces, or optimizing user experiences<br/>i can do anything any time and not wait for the right moment</TextAbout>
             </SectionContact>
 
             <SectionContact $40 $flex>
@@ -168,7 +181,7 @@ export const About = () => {
                     <Subtitle>Skills</Subtitle>
                 </SectionContent>
                 <SectionContent $30 $separateContent>
-                    <Subtitle>{parisHours}:{parisMin}<br/>{parisHours <= 12 ? <span>AM</span> : <span>PM</span>}</Subtitle>
+                    <Subtitle>{parisTime.hours}:{parisTime.minutes}<br/>{parisTime.hours <= 12 ? <span>AM</span> : <span>PM</span>}</Subtitle>
                     <TextAbout>Current local time Paris</TextAbout>
                 </SectionContent>
             </SectionContact>
@@ -178,7 +191,7 @@ export const About = () => {
 
         <WrapperContact $20>
             <SectionContact $20 $grey>
-            <Subtitle>Aka</Subtitle>
+            <Subtitle>Aka : </Subtitle>
             </SectionContact>
             <SectionContact $50>
                 
