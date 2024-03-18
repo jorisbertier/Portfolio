@@ -104,6 +104,12 @@ height: 100%;
         width: 30%;
         background: #0D0D0D;
     `}
+    ${(props) => 
+        props.$separateContent && `
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        `}
 
 `
 
@@ -125,10 +131,19 @@ border-radius: 10px;
 
 const TextAbout = styled.p `
     color: white;
+    font-size: 0.8rem;
 `
 
 
 export const About = () => {
+
+    let date = new Date();
+
+    let parisOffset = 1;
+    let parisHours = (date.getUTCHours() + parisOffset) % 24;
+    let parisMin = (date.getUTCMinutes());
+
+    console.log(typeof(parisHours));
   return (
 
     <ParentWrapperContact>
@@ -145,14 +160,17 @@ export const About = () => {
         <WrapperContact $50>
             <SectionContact $30>
                 <Subtitle>I'M JORIS</Subtitle>
-                <TextAbout>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia inventore, placeat, harum soluta molestias maiores saepe delectus incidunt quo voluptates quis et repudiandae. Veniam ipsa minus reiciendis accusamus harum amet.</TextAbout>
+                <TextAbout>Passionate developer, i build things for people.</TextAbout>
             </SectionContact>
 
             <SectionContact $40 $flex>
                 <SectionContent $70>
                     <Subtitle>Skills</Subtitle>
                 </SectionContent>
-                <SectionContent $30><Subtitle>Skills</Subtitle></SectionContent>
+                <SectionContent $30 $separateContent>
+                    <Subtitle>{parisHours}:{parisMin}<br/>{parisHours <= 12 ? <span>AM</span> : <span>PM</span>}</Subtitle>
+                    <TextAbout>Current local time Paris</TextAbout>
+                </SectionContent>
             </SectionContact>
 
             <SectionContact $30></SectionContact>
