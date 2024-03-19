@@ -6,12 +6,13 @@ const Logo = styled.img `
     padding-left: 5px;
     height: 30px;
     width: 30px;
+    height: ${(props) => props.size}px;
+    width: ${(props) => props.size}px;
 `
 
-export const LogoStack = ({logo}) => {
+export const LogoStack = ({logo, size}) => {
 
-console.log(logo)
   return (
-    <Logo src={logo} />
+    <Logo src={logo} size={size} />
   )
 }

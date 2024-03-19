@@ -4,15 +4,7 @@ import { Project } from './Project'
 import Futur from '../assets/future.png'
 import Entract from '../assets/entracte1.png'
 import Explore from '../assets/calendarAPI1.png'
-
-import Symfony from '../assets/logoStack/symfony-light.png'
-import Bootstrap from '../assets/logoStack/bootstrap-50-light.png'
-import Jquery from '../assets/logoStack/jquery-light.png'
-import Google from '../assets/logoStack/google-light.png'
-import Angular from '../assets/logoStack/angular_whiteTransparent.png'
-import Api from '../assets/logoStack/api-light.png'
-import Js from '../assets/logoStack/js-light.png'
-import Sass from '../assets/logoStack/sass-light.png'
+import {Logos} from '../datas/LogoDatas'
 
 const defaultFontFamilyTitle = css`
     font-family: Inter, sans-serif; /* Vous pouvez remplacer 'Arial' par votre police de caractères par défaut */
@@ -78,9 +70,9 @@ export const ProjectsSection = () => {
             alt="logo symfony"
             description="Future est une plateforme combinant cryptomonnaies et NFTs qui offre aux utilisateurs la possibilité de découvrir, acheter, créer et suivre la valeur des NFTs."
             src={Futur}
-            stack1={Symfony}
-            stack2={Bootstrap}
-            stack3={Angular}
+            stack1={Logos.SymfonyLight}
+            stack2={Logos.BootstrapLight}
+            stack3={Logos.AngularLight}
             />
 
             <Project
@@ -88,8 +80,8 @@ export const ProjectsSection = () => {
             alt="Site de bière Entracte"
             description="Entracte est un site vitrine d'une brasserie et bar en ligne. Le site à pour objectif de présenter la brasserie ainsi que les bières artisanales qui sont proposés par le commerçant."
             src={Entract}
-            stack1={Js}
-            stack2={Sass}
+            stack1={Logos.JsLight}
+            stack2={Logos.SassLight}
             />
 
             <Project
@@ -97,10 +89,10 @@ export const ProjectsSection = () => {
             alt="Calendrier prise de rendez-vous"
             description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Non disponible - Projet confidientiel)"
             src={Explore}
-            stack1={Symfony}
-            stack2={Jquery}
-            stack3={Api}
-            stack4={Google}
+            stack1={Logos.SymfonyLight}
+            stack2={Logos.JqueryLight}
+            stack3={Logos.ApiLight}
+            stack4={Logos.GoogleLight}
             />
 
         </WrapperProject>
