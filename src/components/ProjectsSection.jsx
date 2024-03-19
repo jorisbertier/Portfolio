@@ -3,16 +3,16 @@ import styled, {css} from 'styled-components'
 import { Project } from './Project'
 import Futur from '../assets/future.png'
 import Entract from '../assets/entracte1.png'
-
-import Symfony from '../assets/logoStack/symfony.png'
-import Bootstrap from '../assets/logoStack/bootstrap-logo-shadow.png'
-import Angular from '../assets/logoStack/angular_whiteTransparent.png'
-import Scss from '../assets/logoStack/seal-color-reversed.png'
-import Js from '../assets/logoStack/js.png'
-import Jquery from '../assets/logoStack/jquery.gif'
-import Google from '../assets/logoStack/google.png'
 import Explore from '../assets/calendarAPI1.png'
 
+import Symfony from '../assets/logoStack/symfony-light.png'
+import Bootstrap from '../assets/logoStack/bootstrap-50-light.png'
+import Jquery from '../assets/logoStack/jquery-light.png'
+import Google from '../assets/logoStack/google-light.png'
+import Angular from '../assets/logoStack/angular_whiteTransparent.png'
+import Api from '../assets/logoStack/api-light.png'
+import Js from '../assets/logoStack/js-light.png'
+import Sass from '../assets/logoStack/sass-light.png'
 
 const defaultFontFamilyTitle = css`
     font-family: Inter, sans-serif; /* Vous pouvez remplacer 'Arial' par votre police de caractères par défaut */
@@ -26,8 +26,8 @@ const Subtitle = styled.h2 `
 `
 
 const WrapperProjects = styled.div `
-color: white;
-height: 100vh;
+    color: white;
+    height: 100vh;
 `
 
 const WrapperProject = styled.div `
@@ -88,8 +88,8 @@ export const ProjectsSection = () => {
         alt="Site de bière Entracte"
         description="Entracte est un site vitrine d'une brasserie et bar en ligne. Le site à pour objectif de présenter la brasserie ainsi que les bières artisanales qui sont proposés par le commerçant."
         src={Entract}
-        stack2={Scss}
-        stack3={Js}
+        stack1={Js}
+        stack2={Sass}
         />
 
         <Project
@@ -99,7 +99,8 @@ export const ProjectsSection = () => {
         src={Explore}
         stack1={Symfony}
         stack2={Jquery}
-        stack3={Google}
+        stack3={Api}
+        stack4={Google}
         />
 
         </WrapperProject>
@@ -113,9 +114,6 @@ export const ProjectsSection = () => {
             alt="Calendrier prise de rendez-vous"
             description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Projet confidientiel)"
             src={Explore}
-            stack1={Symfony}
-            stack2={Jquery}
-            stack3={Google}
             />
         
         <div><ButtonLoad onClick={() => setAddProject(false)}>Load close</ButtonLoad></div>

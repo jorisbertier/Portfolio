@@ -1,26 +1,10 @@
 import React from 'react'
 import styled, {css} from 'styled-components';
-import { useState } from 'react'
+import { LogoStack } from './LogoStack';
 
 const defaultFontFamily = css`
-    font-family: Noto Music, sans-serif; /* Vous pouvez remplacer 'Arial' par votre police de caractères par défaut */
+    font-family: Noto Music, sans-serif;
 `;
-
-
-const StyledArrowIcon = styled.i `
-    width: 50px; /* Largeur du cercle */
-    height: 50px; /* Hauteur du cercle */
-    border-radius: 50%; /* Pour créer un cercle */
-    display: flex; /* Pour centrer le contenu */
-    align-items: center; /* Pour centrer le contenu verticalement */
-    justify-content: center; /* Pour centrer le contenu horizontalement */
-    color: white; /* Couleur de la flèche */
-    font-size: 24px; /* Taille de la flèche */
-    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
-    backdrop-filter: blur(10px); /* Effet de flou pour le verre */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Ombre pour le verre */
-    cursor: pointer;
-`
 
 const ProjectsImageWrapper = styled.div`
     position: relative;
@@ -28,6 +12,10 @@ const ProjectsImageWrapper = styled.div`
     width: 400px;
     border-radius: 20px;
     overflow: hidden;
+
+    &:hover > div {
+        opacity: 1;
+    }
 `;
 
 const ProjectsImage = styled.img`
@@ -36,10 +24,7 @@ const ProjectsImage = styled.img`
     object-fit: cover;
     border-radius: 20px;
 `;
-const WrapperArrow = styled.div `
-    display:flex;
-    text-align:center;
-    `
+
 const ImageText = styled.p`
 
     ${defaultFontFamily}
@@ -66,60 +51,35 @@ const ImageText = styled.p`
     }
 `;
 
-const ProjectTechnology = styled.div `
-    margin-left: 10px;
-    display: flex;
-    border-radius: 16px;
-    width: 90%;
-`
-const ImgStack = styled.img `
-margin-left: 10px;
-    width: 50px;
-    height: 50px;
-    ${(props) =>
-        props.$invert &&
-        `filter: invert(100%);`
+const Logo = styled.div `
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    left: 1.2rem;
+    top: 0.5rem;
+    opacity: 0;
+    padding: 5px;
+
+
+    &:hover {
+        opacity: 0.8;
     }
-    display: ${(props) => props.src ? 'block' : 'none'};
-
 `
-export const Project = ({title, alt, description, src, stack1, stack2, stack3}) => {
-
-    const [isOpen, setIsOpen] = useState(false)
+export const Project = ({title, alt, description, src, stack1, stack2, stack3, stack4}) => {
 
   return (
     <div>
                 <ProjectsImageWrapper>
                     <ProjectsImage src={src} alt="Futur project"/>
                     <ImageText>{description}</ImageText>
+                    <Logo>
+                        <LogoStack logo={stack1}></LogoStack>
+                        <LogoStack logo={stack2}></LogoStack>
+                        {stack3 ? <LogoStack logo={stack3}></LogoStack>: null}
+                        {stack4 ? <LogoStack logo={stack4}></LogoStack>: null}
+                    </Logo>
                 </ProjectsImageWrapper>
                 <h2>{title}</h2><br/>
-
-                <WrapperArrow>
-                    {isOpen ? (
-                    <>
-                    
-                        <div>
-                            {/* <StyledArrowIcon className="bi bi-arrow-right" onClick={() => setIsOpen(false)}/> */}
-                            <StyledArrowIcon onClick={() => setIsOpen(false)}> &gt; </StyledArrowIcon>
-                        </div>
-                        <ProjectTechnology>
-                            <h3>Stack - </h3>
-                            <ImgStack src={stack1} alt={alt} $invert/>
-                            <ImgStack src={stack2} alt="logo symfony"/>
-                            <ImgStack src={stack3} alt="logo symfony"/>
-                        </ProjectTechnology>
-                    </>
-                ) : (
-                    <>
-                    <div>
-                        <StyledArrowIcon onClick={() => setIsOpen(true)}> &gt; </StyledArrowIcon>
-                    </div>
-                    <div></div>
-                </>
-                )}
-
-                </WrapperArrow>
             </div>
   )
 }
