@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import Profil from '../assets/Remove-bg.ai_1710531677010.png'
+import videoSrc from '../assets/video.mp4';
+
 
 const WrapperFirstSection = styled.div `
     margin-top: 20vh;
@@ -72,6 +74,9 @@ I develop {'{things}'} for the web.</Title>
             <StyledIcon className="bi bi-linkedin"/>
             <StyledIcon className="bi bi-twitter"/>
         </Span>
+        {/* <video controls autoplay loop>
+  <source src={videoSrc} type="video/mp4"></source>
+</video> */}
     </WrapperFirstSection>)
 }
 

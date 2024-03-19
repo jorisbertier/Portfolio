@@ -29,7 +29,6 @@ const ImageText = styled.p`
 
     ${defaultFontFamily}
     position: absolute;
-    // border-radius: 20px;
     top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -59,11 +58,7 @@ const Logo = styled.div `
     top: 0.5rem;
     opacity: 0;
     padding: 5px;
-
-
-    &:hover {
-        opacity: 0.8;
-    }
+    
 `
 export const Project = ({title, alt, description, src, stack1, stack2, stack3, stack4}) => {
 
@@ -73,8 +68,8 @@ export const Project = ({title, alt, description, src, stack1, stack2, stack3, s
                     <ProjectsImage src={src} alt="Futur project"/>
                     <ImageText>{description}</ImageText>
                     <Logo>
-                        <LogoStack logo={stack1}></LogoStack>
-                        <LogoStack logo={stack2}></LogoStack>
+                        {stack1 ? <LogoStack logo={stack1}></LogoStack>: null}
+                        {stack2 ? <LogoStack logo={stack2}></LogoStack>: null}
                         {stack3 ? <LogoStack logo={stack3}></LogoStack>: null}
                         {stack4 ? <LogoStack logo={stack4}></LogoStack>: null}
                     </Logo>

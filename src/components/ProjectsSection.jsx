@@ -73,50 +73,51 @@ export const ProjectsSection = () => {
         <Subtitle>{`< Projects />`}</Subtitle>
         <WrapperProject>
 
-        <Project
-        title="NFT Marketplace"
-        alt="logo symfony"
-        description="Future est une plateforme combinant cryptomonnaies et NFTs qui offre aux utilisateurs la possibilité de découvrir, acheter, créer et suivre la valeur des NFTs."
-        src={Futur}
-        stack1={Symfony}
-        stack2={Bootstrap}
-        stack3={Angular}
-        />
+            <Project
+            title="NFT Marketplace"
+            alt="logo symfony"
+            description="Future est une plateforme combinant cryptomonnaies et NFTs qui offre aux utilisateurs la possibilité de découvrir, acheter, créer et suivre la valeur des NFTs."
+            src={Futur}
+            stack1={Symfony}
+            stack2={Bootstrap}
+            stack3={Angular}
+            />
 
-        <Project
-        title="Entracte"
-        alt="Site de bière Entracte"
-        description="Entracte est un site vitrine d'une brasserie et bar en ligne. Le site à pour objectif de présenter la brasserie ainsi que les bières artisanales qui sont proposés par le commerçant."
-        src={Entract}
-        stack1={Js}
-        stack2={Sass}
-        />
+            <Project
+            title="Entracte"
+            alt="Site de bière Entracte"
+            description="Entracte est un site vitrine d'une brasserie et bar en ligne. Le site à pour objectif de présenter la brasserie ainsi que les bières artisanales qui sont proposés par le commerçant."
+            src={Entract}
+            stack1={Js}
+            stack2={Sass}
+            />
 
-        <Project
-        title="Explore Calendar"
-        alt="Calendrier prise de rendez-vous"
-        description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Non disponible - Projet confidientiel)"
-        src={Explore}
-        stack1={Symfony}
-        stack2={Jquery}
-        stack3={Api}
-        stack4={Google}
-        />
+            <Project
+            title="Explore Calendar"
+            alt="Calendrier prise de rendez-vous"
+            description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Non disponible - Projet confidientiel)"
+            src={Explore}
+            stack1={Symfony}
+            stack2={Jquery}
+            stack3={Api}
+            stack4={Google}
+            />
 
         </WrapperProject>
         <br/><br/>
         
         {addProject ?
         (
-            <>
-            <Project
-            title="Explore Calendar"
-            alt="Calendrier prise de rendez-vous"
-            description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Projet confidientiel)"
-            src={Explore}
-            />
-        
-        <div><ButtonLoad onClick={() => setAddProject(false)}>Load close</ButtonLoad></div>
+        <>
+            <WrapperProject>
+                <Project
+                title="Explore Calendar"
+                alt="Calendrier prise de rendez-vous"
+                description="Explore est une application qui permet la mutualisation de prise de rende-vous en fonction des créneaux de disponibilités du collaborateur. L'application est connecté à l'API Google Calendar afin de synchroniser les données. (Projet confidientiel)"
+                src={Explore}
+                /><br/>
+            <div><ButtonLoad onClick={() => setAddProject(false)}>Load close</ButtonLoad></div>
+            </WrapperProject>
         </>
         ): (
         <div><ButtonLoad onClick={() => setAddProject(true)}>Load more</ButtonLoad></div>
