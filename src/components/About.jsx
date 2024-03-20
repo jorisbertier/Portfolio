@@ -167,70 +167,7 @@ const SocialDiv = styled.div`
     display: flex;
     // margin-top: 120px;
     padding-left: 10px;
-`;
-
-const BubbleLeft = styled.div `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background: #2b2b2b;
-    color: #FFFFFF;
-    font-family: Arial;
-    font-size: 10px;
-    width: 170px;
-    height: 75px;
-    border-radius: 10px;
-    margin-left: 40px;
-    margin-top: 40px;
-    padding: 10px;
-
-    &:after {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 0;
-        z-index: 1;
-        border-style: solid;
-        border-width: 0 0 20px 20px;
-        border-color: transparent transparent #2b2b2b transparent;
-        top: 50%;
-        left: -20px;
-        margin-top: -10px;
-    }
 `
-
-const BubbleRight = styled.div `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background: teal;
-    color: #FFFFFF;
-    font-size: 10px;
-    line-height: 120px;
-    width: 170px;
-    height: 75px;
-    border-radius: 10px;
-    padding: 0px;
-    margin-left: 150px;
-    margin-top: 40px;
-
-    &:after {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 0;
-        z-index: 1;
-        border-style: solid;
-        border-width: 20px 0 0 20px;
-        border-color: transparent transparent transparent teal;
-        top: 68%;
-        right: -20px;
-        margin-top: -10px;
-    }
-`
-
 
 export const About = () => {
 
@@ -250,13 +187,13 @@ export const About = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setParisTime(getTimeParis());
-          }, 1000);
+        }, 1000);
 
-          return () => clearInterval(interval);
+        return () => clearInterval(interval);
     
     }, [])
 
-  return (
+    return (
 
     <ParentWrapperContact>
     <WrapperContacts>
@@ -308,19 +245,11 @@ export const About = () => {
                         </SocialWrapper>
                     </SocialDiv>
             </SectionContact>
-            {/* <SectionContact $30>
-                
-                    
-                        <Subtitle>
-                        Futur <br/> Projects -</Subtitle>
-                        <TextAbout>Dating website <br/> App Desktop manage stock</TextAbout>
-                    
-            </SectionContact> */}
+
             <SectionContact $70>
-                {/* <BubbleLeft>Hi!  What brings you here today? We'll be happy to assist you!</BubbleLeft>
-                <BubbleRight>CSS Speech Bubble</BubbleRight> */}
                 <ChatBox />
             </SectionContact>
+
         </WrapperContact>
     </WrapperContacts>
     </ParentWrapperContact>
