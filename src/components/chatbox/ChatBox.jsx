@@ -52,7 +52,7 @@ const SendButton = styled.button`
 
 export const ChatBox = () => {
     const [messages, setMessages] = useState([
-        { sender: 'interlocutor', content: "Hi there! How can I help you today?" },
+        { sender: 'interlocutor', content: `Hi there! I'm Claptrap your Chatbot personal 🤖 What's your name?` },
     ]);
     const [inputValue, setInputValue] = useState('');
 
@@ -74,10 +74,10 @@ export const ChatBox = () => {
     useEffect(() => {
         if (currentQuestionIndex === 1) {
           setQuestions([
+            `Hi ${inputValue}, nice to meet you ! How help you?`,
             "What's your name?",
-            `How can I assist you further, ${inputValue}?`,
-            "How can I assist you further?",
-            "How can I assist you further?",
+            "tell me something I don't know",
+            "Thank you for chatting with us today! If you have any more questions in the future, don't hesitate to reach out. Have a great day",
           ]);
         }
       }, [inputValue, currentQuestionIndex]);
