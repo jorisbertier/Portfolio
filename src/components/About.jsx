@@ -4,6 +4,7 @@ import Profil from '../assets/Remove-bg.ai_1710531677010.png'
 import { LogoStack } from './LogoStack'
 
 import {Logos} from '../datas/LogoDatas'
+import { ChatBox } from './chatbox/ChatBox'
 
 
 const ParentWrapperContact = styled.div `
@@ -16,13 +17,13 @@ const WrapperContacts = styled.div `
     max-width: 100vw;
     height: 100vh;
     width: 90%;
-    margin: 0;
-    gap: 10px;
+    // margin: 10px;
+    gap: 15px;
 `
 const WrapperContact = styled.div `
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 
 ${(props) => 
     props.$50 && `
@@ -39,6 +40,7 @@ ${(props) =>
         height:100%;
         width: 30%;
     `}
+    
 `
 const SectionContact = styled.div `
     background: #1e1e1e;
@@ -92,11 +94,20 @@ const SectionContact = styled.div `
         display: flex;
         gap: 10px;
     `}
+    // transition: 0.2s;
+
+    // &:hover {
+    //     opacity: 0.7;
+    //     box-shadow: 8px 6px 0 2px #1d1e30;
+    //     transform : translateY(-10px);
+    // }
 `
 
 const SectionContent = styled.div `
-border-radius: 10px;
-height: 100%;
+    border-radius: 10px;
+    height: 100%;
+    padding-left: 10px;
+
     ${(props) => 
     props.$70 && `
         width: 70%;
@@ -121,33 +132,105 @@ const Subtitle = styled.h2 `
     font-weight: 700;
     font-size: 35px;
     color: white;
+    padding-left: 10px;
 `
 const Img = styled.img `
     // filter: grayscale(100%);
     background: #1e1e1e;
     border: 1px solid black;
     border-radius: 10px;
-        object-fit: cover;
-        height: 95%;
-        width: 95%;
+    object-fit: cover;
+    height: 95%;
+    width: 95%;
 `
 
 const TextAbout = styled.p `
     color: white;
     font-size: 0.8rem;
+    padding-left: 10px;
 `
 
 const SocialWrapper = styled.div `
-display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: 20px;
     background-color: #CBCBC8;
     border-radius: 10px;
     padding: 10px;
-    margin-top: -80px;
+    // margin-top: -80px;
     height: 3rem;
     width: 3rem;
-
 `
+
+const SocialDiv = styled.div`
+    display: flex;
+    // margin-top: 120px;
+    padding-left: 10px;
+`;
+
+const BubbleLeft = styled.div `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #2b2b2b;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 10px;
+    width: 170px;
+    height: 75px;
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-top: 40px;
+    padding: 10px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        z-index: 1;
+        border-style: solid;
+        border-width: 0 0 20px 20px;
+        border-color: transparent transparent #2b2b2b transparent;
+        top: 50%;
+        left: -20px;
+        margin-top: -10px;
+    }
+`
+
+const BubbleRight = styled.div `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: teal;
+    color: #FFFFFF;
+    font-size: 10px;
+    line-height: 120px;
+    width: 170px;
+    height: 75px;
+    border-radius: 10px;
+    padding: 0px;
+    margin-left: 150px;
+    margin-top: 40px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        z-index: 1;
+        border-style: solid;
+        border-width: 20px 0 0 20px;
+        border-color: transparent transparent transparent teal;
+        top: 68%;
+        right: -20px;
+        margin-top: -10px;
+    }
+`
+
 
 export const About = () => {
 
@@ -214,24 +297,30 @@ export const About = () => {
         </WrapperContact>
 
         <WrapperContact $20>
-            <SectionContact $20 $grey>
-                <Subtitle>Social Networks - </Subtitle><br/>
-                    <SocialWrapper>
-                        <LogoStack logo={Logos.GitDark} size={'45'}/>
-                    </SocialWrapper>
-                    <SocialWrapper>
-                        <LogoStack logo={Logos.LinkedinDark} size={'45'}/>
-                    </SocialWrapper>
+            <SectionContact $30 $grey>
+                <Subtitle>Social Networks - </Subtitle>
+                    <SocialDiv>
+                        <SocialWrapper>
+                            <LogoStack logo={Logos.GitDark} size={'45'}/>
+                        </SocialWrapper>
+                        <SocialWrapper>
+                            <LogoStack logo={Logos.LinkedinDark} size={'45'}/>
+                        </SocialWrapper>
+                    </SocialDiv>
             </SectionContact>
-            <SectionContact $50>
+            {/* <SectionContact $30>
                 
                     
                         <Subtitle>
                         Futur <br/> Projects -</Subtitle>
                         <TextAbout>Dating website <br/> App Desktop manage stock</TextAbout>
                     
+            </SectionContact> */}
+            <SectionContact $70>
+                {/* <BubbleLeft>Hi!  What brings you here today? We'll be happy to assist you!</BubbleLeft>
+                <BubbleRight>CSS Speech Bubble</BubbleRight> */}
+                <ChatBox />
             </SectionContact>
-            <SectionContact $30></SectionContact>
         </WrapperContact>
     </WrapperContacts>
     </ParentWrapperContact>
