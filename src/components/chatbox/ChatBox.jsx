@@ -2,50 +2,57 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const ChatContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 `;
 
 const MessageList = styled.div`
-  flex: 1;
-  overflow-y: auto;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 20px;
 `;
 
 const Message = styled.div`
-  background-color: ${(props) => (props.sender === 'interlocutor' ? '#e0e0e0' : 'teal')};
-  margin: 5px;
-  padding: 10px;
-  border-radius: 5px;
+    background-color: ${(props) => (props.sender === 'interlocutor' ? '#e0e0e0' : 'teal')};
+    margin: 25px 10px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 60%;
+    height: auto;
+    word-wrap: break-word;
+    left: ${(props) => (props.sender === 'interlocutor' ? '0px' : '70px')};
+    position: relative;
 `;
 
 const MessageInputContainer = styled.div`
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 `;
 
 const MessageInput = styled.input`
-  flex: 1;
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
+    flex: 1;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
 `;
 
 const SendButton = styled.button`
-  margin-left: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
 `;
 
 export const ChatBox = () => {
     const [messages, setMessages] = useState([
-      { sender: 'interlocutor', content: "Hi there! How can I help you today?" },
+        { sender: 'interlocutor', content: "Hi there! How can I help you today?" },
     ]);
     const [inputValue, setInputValue] = useState('');
 
@@ -63,6 +70,7 @@ export const ChatBox = () => {
     ]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
     useEffect(() => {
         if (currentQuestionIndex === 1) {
           setQuestions([
@@ -89,10 +97,7 @@ export const ChatBox = () => {
           setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
   
-        // Set the new list of messages
         setMessages(newMessages);
-  
-        // Clear the input value
         setInputValue('');
       }
     };
