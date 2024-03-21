@@ -12,6 +12,7 @@ import FigmaLight from '../assets/logoStack/figma-light.png'
 import MysqlLight from '../assets/logoStack/mysql-light.png'
 import GitDark from '../assets/contact/github-dark.png'
 import LinkedinDark from '../assets/contact/linkedin-dark.png'
+import Send from '../assets/contact/send-light.png'
 
 export const Logos = {
     SymfonyLight: SymfonyLight,
@@ -27,6 +28,7 @@ export const Logos = {
     FigmaLight: FigmaLight,
     MysqlLight: MysqlLight,
     GitDark: GitDark,
-    LinkedinDark: LinkedinDark
+    LinkedinDark: LinkedinDark,
+    Send: Send
 
 }

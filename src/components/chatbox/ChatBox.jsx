@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import {Logos} from '../../datas/LogoDatas'
+import { LogoStack } from '../LogoStack';
 
 const ChatContainer = styled.div`
     display: flex;
@@ -29,6 +31,9 @@ const Message = styled.div`
 const MessageInputContainer = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 0px;
 `;
 
 const MessageInput = styled.input`
@@ -36,15 +41,22 @@ const MessageInput = styled.input`
     margin-top: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
     outline: none;
+    background: #CBCBC8;
+    color: black;
+    font-weight: 500;
+
 `;
 
 const SendButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 10px;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     background-color: teal;
     color: white;
     cursor: pointer;
@@ -63,63 +75,65 @@ export const ChatBox = () => {
     //   };
 
     const [questions, setQuestions] = useState([
-      "What's your name?",
-      `How can I assist you further?`,
-      "How can I assist you further?",
-      "How can I assist you further?",
+        "What's your name?",
+        `How can I assist you further?`,
+        "How can I assist you further?",
+        "How can I assist you further?",
     ]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
     useEffect(() => {
         if (currentQuestionIndex === 1) {
-          setQuestions([
+            setQuestions([
             `Hi ${inputValue}, nice to meet you ! How help you?`,
             "What's your name?",
             "tell me something I don't know",
             "Thank you for chatting with us today! If you have any more questions in the future, don't hesitate to reach out. Have a great day",
-          ]);
+        ]);
         }
-      }, [inputValue, currentQuestionIndex]);
-  
+    }, [inputValue, currentQuestionIndex]);
+
     const handleInputChange = (event) => {
-      setInputValue(event.target.value);
+        setInputValue(event.target.value);
     };
-  
+
     const handleSendMessage = () => {
-      if (inputValue.trim() !== '') {
+        if (inputValue.trim() !== '') {
         // Add the user's message to the list of messages
         const newMessages = [...messages, { sender: 'user', content: inputValue }];
-  
+
         // If there are more questions to ask, add the next question to the list of messages
         if (currentQuestionIndex < questions.length) {
-          newMessages.push({ sender: 'interlocutor', content: questions[currentQuestionIndex] });
-          setCurrentQuestionIndex(currentQuestionIndex + 1);
+            newMessages.push({ sender: 'interlocutor', content: questions[currentQuestionIndex] });
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
-  
+
         setMessages(newMessages);
         setInputValue('');
-      }
+        }
     };
-  
+
     return (
-      <ChatContainer>
-        <MessageList>
-          {messages.map((message, index) => (
-            <Message key={index} sender={message.sender}>
-              {message.content}
-            </Message>
-          ))}
-        </MessageList>
-        <MessageInputContainer>
-          <MessageInput
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Type your message..."
-          />
-          <SendButton onClick={handleSendMessage}>Send</SendButton>
-        </MessageInputContainer>
-      </ChatContainer>
-    );
-  };
+        <ChatContainer>
+            <MessageList>
+            {messages.map((message, index) => (
+                <Message key={index} sender={message.sender}>
+                {message.content}
+                </Message>
+            ))}
+            </MessageList>
+            <MessageInputContainer>
+                <MessageInput
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    placeholder="Type your message..."
+                />
+                <SendButton onClick={handleSendMessage}>
+                    <LogoStack logo={Logos.Send} size={'20'}/>
+                </SendButton>
+            </MessageInputContainer>
+        </ChatContainer>
+        );
+    };
