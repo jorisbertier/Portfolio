@@ -82,7 +82,7 @@ export const ChatBox = () => {
     ]);
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
+//
     useEffect(() => {
         if (currentQuestionIndex === 1) {
             setQuestions([
