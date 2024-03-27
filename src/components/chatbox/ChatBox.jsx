@@ -81,7 +81,7 @@ export const ChatBox = () => {
         "How can I assist you further?",
     ]);
 
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);;
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
     useEffect(() => {
         if (currentQuestionIndex === 1) {
