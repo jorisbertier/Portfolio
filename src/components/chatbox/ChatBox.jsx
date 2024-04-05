@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import {Logos} from '../../datas/LogoDatas'
 import { LogoStack } from '../LogoStack';
 
@@ -15,7 +15,28 @@ const MessageList = styled.div`
     overflow-x: hidden;
     margin-left: 20px;
 `;
+const LoaderAnimation = keyframes`
+    0%,
+    10% {background-position: 0 0,0 0,0 0,0 0}
+    33% {background-position: 0 0,calc(100%/3) 0,calc(100%/3) 0,calc(100%/3) 0}
+    66% {background-position: 0 0,calc(100%/3) 0,calc(2*100%/3) 0,calc(2*100%/3) 0}
+    90%,
+    100% {background-position: 0 0,calc(100%/3) 0,calc(2*100%/3) 0,100% 0}
+`;
 
+const LoaderScaleAnimation = keyframes`
+    0%,49.99% {transform: scale( 1)}
+    50%,100%  {transform: scale(-1)}
+`;
+
+const LoaderContainer = styled.div`
+    height: 15px;
+    aspect-ratio: 5;
+    --_g:no-repeat radial-gradient(farthest-side,#008080 94%,#0000);
+    background: var(--_g),var(--_g),var(--_g),var(--_g);
+    background-size: 20% 100%;
+    animation: ${LoaderAnimation} 0.75s infinite alternate, ${LoaderScaleAnimation} 1.5s infinite alternate;
+`;
 const Message = styled.div`
     background-color: ${(props) => (props.sender === 'interlocutor' ? '#e0e0e0' : 'teal')};
     margin: 25px 10px;
@@ -67,30 +88,23 @@ export const ChatBox = () => {
         { sender: 'interlocutor', content: `Hi there! I'm Claptrap your Chatbot personal 🤖` },
     ]);
     const [inputValue, setInputValue] = useState('');
-
-    // const [userName, setUserName] = useState('');
-
-    // const handleNameChange = (event) => {
-    //     setUserName(event.target.value);
-    //   };
-
+    const [isTyping, setIsTyping] = useState(false);
     const [questions, setQuestions] = useState([
         "What's your name?",
         `How can I assist you further?`,
         "How can I assist you further?",
         "How can I assist you further?",
     ]);
-
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-//
+
     useEffect(() => {
         if (currentQuestionIndex === 1) {
             setQuestions([
-            `Hi, nice to meet you ! How help you?`,
-            ` Hi ${inputValue}, nice too meet you`,
-            "tell me something I don't know",
-            "Thank you for chatting with us today! If you have any more questions in the future, don't hesitate to reach out. Have a great day",
-        ]);
+                `Hi, nice to meet you! How can I help you?`,
+                `Hi ${inputValue}, nice to meet you.`,
+                "Tell me something I don't know.",
+                "Thank you for chatting with us today! If you have any more questions in the future, don't hesitate to reach out. Have a great day.",
+            ]);
         }
     }, [inputValue, currentQuestionIndex]);
 
@@ -100,28 +114,33 @@ export const ChatBox = () => {
 
     const handleSendMessage = () => {
         if (inputValue.trim() !== '') {
-        // Add the user's message to the list of messages
-        const newMessages = [...messages, { sender: 'user', content: inputValue }];
+            const newMessages = [...messages, { sender: 'user', content: inputValue }];
+            setMessages(newMessages);
+            setInputValue('');
 
-        // If there are more questions to ask, add the next question to the list of messages
-        if (currentQuestionIndex < questions.length) {
-            newMessages.push({ sender: 'interlocutor', content: questions[currentQuestionIndex] });
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-        }
-
-        setMessages(newMessages);
-        setInputValue('');
+            // Si le message envoyé est du bot, appliquer un délai avant de répondre
+            if (messages[messages.length - 1].sender === 'interlocutor') {
+                setIsTyping(true);
+                setTimeout(() => {
+                    const newMessagesWithBotReply = [...newMessages];
+                    newMessagesWithBotReply.push({ sender: 'interlocutor', content: questions[currentQuestionIndex] });
+                    setCurrentQuestionIndex(currentQuestionIndex + 1);
+                    setMessages(newMessagesWithBotReply);
+                    setIsTyping(false);
+                }, 2000); // Délai de 2 secondes avant la réponse du bot
+            }
         }
     };
 
     return (
         <ChatContainer>
             <MessageList>
-            {messages.map((message, index) => (
-                <Message key={index} sender={message.sender}>
-                {message.content}
-                </Message>
-            ))}
+                {messages.map((message, index) => (
+                    <Message key={index} sender={message.sender}>
+                        {message.content}
+                    </Message>
+                ))}
+                {isTyping && <LoaderContainer />}
             </MessageList>
             <MessageInputContainer>
                 <MessageInput
@@ -131,9 +150,9 @@ export const ChatBox = () => {
                     placeholder="Type your message..."
                 />
                 <SendButton onClick={handleSendMessage}>
-                    <LogoStack logo={Logos.Send} size={'20'}/>
+                    <LogoStack logo={Logos.Send} size={'20'} />
                 </SendButton>
             </MessageInputContainer>
         </ChatContainer>
-        );
-    };
+    );
+};
