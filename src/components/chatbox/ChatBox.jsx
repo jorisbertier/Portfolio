@@ -85,15 +85,12 @@ const SendButton = styled.button`
 
 export const ChatBox = () => {
     const [messages, setMessages] = useState([
-        { sender: 'interlocutor', content: `Hi there! I'm Claptrap your Chatbot personal 🤖` },
+        { sender: 'interlocutor', content: `Hi there! I'm Claptrap your Chatbot personal 🤖 I need your personal information which I will then encrypt to show you the extent of the possibilities offered by the web !! Are you ready to discover the universe? Write 'yes' when you are ready` },
     ]);
     const [inputValue, setInputValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [questions, setQuestions] = useState([
-        "What's your name?",
-        `How can I assist you further?`,
-        "How can I assist you further?",
-        "How can I assist you further?",
+        "First all, what's your first name? (1 word)",
     ]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -101,9 +98,11 @@ export const ChatBox = () => {
         if (currentQuestionIndex === 1) {
             setQuestions([
                 `Hi, nice to meet you! How can I help you?`,
-                `Hi ${inputValue}, nice to meet you.`,
-                "Tell me something I don't know.",
-                "Thank you for chatting with us today! If you have any more questions in the future, don't hesitate to reach out. Have a great day.",
+                `Hi ${inputValue}, nice to meet you. What is your lastName? (1 word)`,
+                `Well done, what is your email?`,
+                `Well done, what is your password?`,
+                `😈 thank you for your personal information, I am in the process of finding a buyer`,
+                "Just kidding, I'm a caring bot 😇! Never trust anyone, no matter how friendly they are. You never know who is hiding behind the screen, ready to take advantage of your naivety for their own benefit. Don't be easy prey in this digital jungle",
             ]);
         }
     }, [inputValue, currentQuestionIndex]);
@@ -117,17 +116,53 @@ export const ChatBox = () => {
             const newMessages = [...messages, { sender: 'user', content: inputValue }];
             setMessages(newMessages);
             setInputValue('');
-
-            // Si le message envoyé est du bot, appliquer un délai avant de répondre
+    
             if (messages[messages.length - 1].sender === 'interlocutor') {
                 setIsTyping(true);
                 setTimeout(() => {
-                    const newMessagesWithBotReply = [...newMessages];
+                    let newMessagesWithBotReply = [...newMessages];
+                    if (currentQuestionIndex === 0) {
+                        if (inputValue.trim() !== "yes") {
+                            newMessagesWithBotReply.push({ sender: 'interlocutor', content: "Please enter 'yes' for play the game !!!" });
+                            setMessages(newMessagesWithBotReply);
+                            setIsTyping(false);
+                            return;
+                        }
+                    }
+                    if (currentQuestionIndex === 1) {
+                        // Validation pour le nombre de mots dans la réponse
+                        const words = inputValue.trim().split(' ');
+                        if (words.length !== 1) {
+                            newMessagesWithBotReply.push({ sender: 'interlocutor', content: "Please enter only one word for your first name." });
+                            setMessages(newMessagesWithBotReply);
+                            setIsTyping(false);
+                            return;
+                        }
+                    }
+                    if (currentQuestionIndex === 2) {
+                        const words = inputValue.trim().split(' ');
+                        if (words.length !== 1) {
+                            newMessagesWithBotReply.push({ sender: 'interlocutor', content: "Please enter only one word for your last name." });
+                            setMessages(newMessagesWithBotReply);
+                            setIsTyping(false);
+                            return;
+                        }
+                    }
+                    if (currentQuestionIndex === 3) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(inputValue.trim())) {
+                            newMessagesWithBotReply.push({ sender: 'interlocutor', content: "Please enter a email valid." });
+                            setMessages(newMessagesWithBotReply);
+                            setIsTyping(false);
+                            return;
+                        }
+                    }
+    
                     newMessagesWithBotReply.push({ sender: 'interlocutor', content: questions[currentQuestionIndex] });
                     setCurrentQuestionIndex(currentQuestionIndex + 1);
                     setMessages(newMessagesWithBotReply);
                     setIsTyping(false);
-                }, 2000); // Délai de 2 secondes avant la réponse du bot
+                }, 2000);
             }
         }
     };
