@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import {Logos} from '../../datas/LogoDatas'
 import { LogoStack } from '../LogoStack';
@@ -93,6 +93,12 @@ export const ChatBox = () => {
         "First all, what's your first name? (1 word)",
     ]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    
+    const messagesEndRef = useRef(null); // Référence à l'élément de la liste de messages
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" }); // Faire défiler vers le bas lorsque les messages changent
+    }, [messages]);
 
     useEffect(() => {
         if (currentQuestionIndex === 1) {
@@ -176,6 +182,7 @@ export const ChatBox = () => {
                     </Message>
                 ))}
                 {isTyping && <LoaderContainer />}
+                <div ref={messagesEndRef} /> {/* Référence à l'élément de la liste de messages */}
             </MessageList>
             <MessageInputContainer>
                 <MessageInput
