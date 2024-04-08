@@ -5,6 +5,7 @@ import { LogoStack } from './LogoStack'
 
 import {Logos} from '../datas/LogoDatas'
 import { ChatBox } from './chatbox/ChatBox'
+import { Game } from './game/Game'
 
 
 const ParentWrapperContact = styled.div `
@@ -230,7 +231,7 @@ export const About = () => {
                 </SectionContent>
             </SectionContact>
 
-            <SectionContact $30></SectionContact>
+            <SectionContact $30><Game /></SectionContact>
         </WrapperContact>
 
         <WrapperContact $20>

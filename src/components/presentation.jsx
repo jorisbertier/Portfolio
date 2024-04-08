@@ -51,11 +51,11 @@ const Blob = styled.svg `
 `
 
 const Img = styled.img `
-object-fit: cover;
-height: 600px;
-width: 400px;
-// border-radius: 50%;
-background: linear-gradient(45deg, #9edbff, #b3a0ff 50%, #f29dff);;
+    object-fit: cover;
+    height: 600px;
+    width: 400px;
+    // border-radius: 50%;
+    background: linear-gradient(45deg, #9edbff, #b3a0ff 50%, #f29dff);;
 `
 function Presentation () {
     return( 
