@@ -69,11 +69,13 @@ const LogoSend = styled.img `
 const SwitchButton = styled.button`
     position: relative;
     padding: 5px 10px;
-    background-color: #eee;
+    // background-color: #eee;
+    background: teal;
     border: none;
     outline: none;
     cursor: pointer;
     border-radius: 20px;
+    width: 60px;
 `;
 
 const Indicator = styled.div`
@@ -155,8 +157,9 @@ export const Encrypt = () => {
                 <ButtonSubmit type="submit"><LogoSend src={Logos.Send} alt="logo send" /></ButtonSubmit>
                 <SwitchButton onClick={() => setIsOpen(!isOpen)}>
                     <Indicator encrypt={isOpen} />
-                    {isOpen ? 'Decrypt' : 'Encrypt'}
+                    {isOpen ? <LogoSend src={Logos.LockClose} alt="logo send" /> : <LogoSend src={Logos.LockOpen} alt="logo send" />}
                 </SwitchButton>
+                {/* <img src={Logos.LockClose} /> */}
             </form>
             <WrapperResponse>
                 <ResponseArea></ResponseArea>
