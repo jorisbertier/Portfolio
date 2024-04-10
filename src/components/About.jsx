@@ -52,7 +52,7 @@ const SectionContact = styled.div `
     ${(props) => 
     props.$70 && `
         height:70%;
-        width: 90%;
+        width: 100%;
     `}
     ${(props) => 
     props.$80 && `
@@ -95,20 +95,25 @@ const SectionContact = styled.div `
         props.$flex && `
         display: flex;
         gap: 10px;
+        background: none;
     `}
-    // transition: 0.2s;
+    transition: 0.2s;
 
-    // &:hover {
-    //     opacity: 0.7;
-    //     box-shadow: 8px 6px 0 2px #1d1e30;
-    //     transform : translateY(-10px);
-    // }
+    ${(props) => 
+        props.$hover && `
+        &:hover {
+            opacity: 0.7;
+            box-shadow: 8px 6px 0 2px #1d1e30;
+            transform : translateY(-10px);
+        }
+    `}
 `
 
 const SectionContent = styled.div `
     border-radius: 10px;
     height: 100%;
     padding-left: 10px;
+    transition: 0.2s;
 
     ${(props) => 
     props.$70 && `
@@ -125,8 +130,16 @@ const SectionContent = styled.div `
             display: flex;
             justify-content: space-between;
             flex-direction: column;
-        `}
+    `}
 
+    ${(props) => 
+        props.$hover && `
+        &:hover {
+            opacity: 0.7;
+            box-shadow: 8px 6px 0 2px #1d1e30;
+            transform : translateY(-10px);
+        }
+    `}
 `
 
 const Subtitle = styled.h2 `
@@ -201,21 +214,21 @@ export const About = () => {
     <WrapperContacts>
 
         <WrapperContact $30>
-            <SectionContact $80><Img src={Profil}/></SectionContact>
-            <SectionContact $20 $grey>
+            <SectionContact $80 $hover><Img src={Profil}/></SectionContact>
+            <SectionContact $20 $grey $hover>
                 <Subtitle>Aka</Subtitle>
                 <TextAbout>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </TextAbout>
             </SectionContact>
         </WrapperContact>
 
         <WrapperContact $50>
-            <SectionContact $30>
+            <SectionContact $30 $hover>
                 <Subtitle>I'M JORIS</Subtitle>
                 <TextAbout>I'm passionate developer, know for technical expertise. I'm building websites, designing user interfaces, or optimizing user experiences<br/>i can do anything any time and not wait for the right moment</TextAbout>
             </SectionContact>
 
             <SectionContact $40 $flex>
-                <SectionContent $70>
+                <SectionContent $70 $hover>
                     <Subtitle>Skills</Subtitle>
                     <LogoStack logo={Logos.SymfonyLight} size={'45'}/>
                     <LogoStack logo={Logos.AngularLight} size={'45'}/>
@@ -226,7 +239,7 @@ export const About = () => {
                     <LogoStack logo={Logos.GitLight} size={'45'}/>
                     <LogoStack logo={Logos.FigmaLight} size={'45'}/>
                 </SectionContent>
-                <SectionContent $30 $separateContent>
+                <SectionContent $30 $separateContent $hover>
                     <Subtitle>{parisTime.hours}:{parisTime.minutes}<br/>{parisTime.hours <= 12 ? <span>AM</span> : <span>PM</span>}</Subtitle>
                     <TextAbout>Current local time Paris</TextAbout>
                 </SectionContent>
