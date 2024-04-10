@@ -8,6 +8,15 @@ const EncryptContainer = styled.div `
     justify-content: center;
     align-items: center;
 `
+
+const Form = styled.form `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 70%;
+    // margin-left: 15%;
+`
 const WrapperResponse = styled.div `
     width: 100%;
     display: flex;
@@ -18,7 +27,7 @@ const WrapperResponse = styled.div `
 
 
 const ResponseArea = styled.div `
-    background: linear-gradient(45deg, #9edbff, #b3a0ff 50%, #f29dff);
+    background: linear-gradient(90deg, rgba(0,128,128,1) 0%, rgba(60,171,171,1) 100%);
     border-radius: 20px 20px 0 0;
     padding: 10px 20px;
     // position: relative;
@@ -28,7 +37,7 @@ const ResponseArea = styled.div `
 `
 const ResponseContainer = styled.div `
     height: 5rem;
-    background: blue;
+    background-color: #e0e0e0;
     width: 70%;
     margin-left: 15%;
     padding: 10px 20px; 
@@ -36,15 +45,14 @@ const ResponseContainer = styled.div `
 `
 
 const InputEncrypt = styled.input `
-width: 70%;
+    padding: 15px 70px 15px 25px;
+    width: 100%;
     border: none;
     padding: 1rem;
     border-radius: 1rem;
     background: #e8e8e8;
-    // box-shadow: 20px 20px 60px #c5c5c5,
-        // -20px -20px 60px #ffffff;
     transition: 0.3s;
-        width: 100px;
+        // width: 100px;
         &:focus {
             outline-color: #e8e8e8;
             background: #e8e8e8;
@@ -59,6 +67,11 @@ const ButtonSubmit = styled.button `
     background: teal;
     border: none;
     border-radius: 50%;
+    margin-left: -60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 `
 const LogoSend = styled.img `
@@ -86,6 +99,9 @@ const SwitchButton = styled.button`
     cursor: pointer;
     border-radius: 20px;
     width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center
 `;
 
 const Indicator = styled.div`
@@ -162,17 +178,17 @@ export const Encrypt = () => {
 
     return (
         <EncryptContainer>
-            <form onSubmit={isOpen ? handleSubmitDecrypt : handleSubmit}>
-                <InputEncrypt type="text" onChange={handleChange}/>
+            <Form onSubmit={isOpen ? handleSubmitDecrypt : handleSubmit}>
+                <InputEncrypt type="text" onChange={handleChange} placeholder="Write your word to encrypt " />
                 <ButtonSubmit type="submit"><LogoSend src={Logos.Send} alt="logo send" /></ButtonSubmit>
                 <SwitchButton onClick={() => setIsOpen(!isOpen)}>
                     <Indicator encrypt={isOpen} />
                     {isOpen ? <LogoSend src={Logos.LockClose} alt="logo send" $isLeft/> : <LogoSend src={Logos.LockOpen} alt="logo send" $isRight/>}
                 </SwitchButton>
                 {/* <img src={Logos.LockClose} /> */}
-            </form>
+            </Form>
             <WrapperResponse>
-                <ResponseArea></ResponseArea>
+                <ResponseArea>Response Area {isOpen ? "Encrypt": "Decrypt"}</ResponseArea>
                 <ResponseContainer>{encryptValue}</ResponseContainer>
             </WrapperResponse>
         </EncryptContainer>
