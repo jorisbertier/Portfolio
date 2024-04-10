@@ -64,11 +64,21 @@ const ButtonSubmit = styled.button `
 const LogoSend = styled.img `
     width: 20px;
     height: 20px;
+    transition: 0.25s;
+    ${(props) => 
+        props.$isLeft &&
+        `margin-left: 23px;`
+    }
+    ${(props) => 
+        props.$isRight &&
+        `margin-right: 23px;`
+    }
 `
 
 const SwitchButton = styled.button`
     position: relative;
-    padding: 5px 10px;
+    // padding: 5px 10px;
+    height: 30px;
     // background-color: #eee;
     background: teal;
     border: none;
@@ -157,7 +167,7 @@ export const Encrypt = () => {
                 <ButtonSubmit type="submit"><LogoSend src={Logos.Send} alt="logo send" /></ButtonSubmit>
                 <SwitchButton onClick={() => setIsOpen(!isOpen)}>
                     <Indicator encrypt={isOpen} />
-                    {isOpen ? <LogoSend src={Logos.LockClose} alt="logo send" /> : <LogoSend src={Logos.LockOpen} alt="logo send" />}
+                    {isOpen ? <LogoSend src={Logos.LockClose} alt="logo send" $isLeft/> : <LogoSend src={Logos.LockOpen} alt="logo send" $isRight/>}
                 </SwitchButton>
                 {/* <img src={Logos.LockClose} /> */}
             </form>
