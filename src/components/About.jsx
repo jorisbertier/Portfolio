@@ -268,5 +268,5 @@ export const About = () => {
         </WrapperContact>
     </WrapperContacts>
     </ParentWrapperContact>
-  )
+    )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {Logos} from '../../datas/LogoDatas'
 
@@ -123,6 +123,13 @@ export const Encrypt = () => {
     const [encryptValue, setEncryptValue] = useState('')
     const [isOpen, setIsOpen] = useState(false)
 
+    // useEffect(() => {
+
+    //     if(isOpen) {
+    //         setEncryptValue('')
+    //     }
+    // }, [isOpen])
+
     const encryptData = (data) => {
         let encryptedData = '';
     
@@ -141,11 +148,11 @@ export const Encrypt = () => {
     
         return encryptedData;
     };
+
     const decryptData = (encryptedData) => {
         let decryptedData = '';
     
         for (let i = 0; i < encryptedData.length; i++) {
-
             const charCode = encryptedData.charCodeAt(i);
             const shift = i + 1;
 
@@ -153,10 +160,8 @@ export const Encrypt = () => {
             while (decryptedCharCode < 32) {
                 decryptedCharCode += 95;
             }
-
             decryptedData += String.fromCharCode(decryptedCharCode);
         }
-    
         return decryptedData;
     };
 
@@ -165,6 +170,7 @@ export const Encrypt = () => {
     }
 
     const handleSubmit = (event) => {
+
         event.preventDefault();
         const textEncrypted = encryptData(inputValue)
         setEncryptValue(textEncrypted)
@@ -176,12 +182,19 @@ export const Encrypt = () => {
         setEncryptValue(textEncrypted)
     }
 
+    const handleToggleMode =() => {
+        setIsOpen(!isOpen)
+        setEncryptValue('')
+        console.log('test')
+
+    }
+
     return (
         <EncryptContainer>
             <Form onSubmit={isOpen ? handleSubmitDecrypt : handleSubmit}>
                 <InputEncrypt type="text" onChange={handleChange} placeholder="Write your word to encrypt " />
                 <ButtonSubmit type="submit"><LogoSend src={Logos.Send} alt="logo send" /></ButtonSubmit>
-                <SwitchButton onClick={() => setIsOpen(!isOpen)}>
+                <SwitchButton onClick={handleToggleMode}>
                     <Indicator encrypt={isOpen} />
                     {isOpen ? <LogoSend src={Logos.LockClose} alt="logo send" $isLeft/> : <LogoSend src={Logos.LockOpen} alt="logo send" $isRight/>}
                 </SwitchButton>
